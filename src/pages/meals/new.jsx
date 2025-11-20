@@ -78,151 +78,396 @@ const AddMeal = () => {
     }
   };
 
+  // Styles
+  const styles = {
+    container: {
+      minHeight: "100vh",
+      backgroundColor: "#010409",
+      padding: "2rem 1rem",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "flex-start"
+    },
+    card: {
+      maxWidth: "600px",
+      width: "100%",
+      backgroundColor: "#0f111a",
+      borderRadius: "12px",
+      border: "1px solid #334155",
+      boxShadow: "0 4px 20px rgba(0,0,0,0.4)"
+    },
+    header: {
+      backgroundColor: "#1e293b",
+      padding: "1.5rem",
+      borderBottom: "1px solid #334155",
+      borderTopLeftRadius: "12px",
+      borderTopRightRadius: "12px"
+    },
+    headerContent: {
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem"
+    },
+    backButton: {
+      background: "none",
+      border: "none",
+      color: "#60a5fa",
+      cursor: "pointer",
+      padding: "0.5rem",
+      borderRadius: "6px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "all 0.2s ease"
+    },
+    title: {
+      color: "#ffffff",
+      fontSize: "1.5rem",
+      fontWeight: "600",
+      margin: "0"
+    },
+    body: {
+      padding: "2rem"
+    },
+    errorAlert: {
+      backgroundColor: "#fee2e2",
+      border: "1px solid #f87171",
+      color: "#991b1b",
+      padding: "0.75rem 1rem",
+      borderRadius: "8px",
+      marginBottom: "1.5rem"
+    },
+    form: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "1.5rem"
+    },
+    formGroup: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.5rem"
+    },
+    label: {
+      color: "#f1f5f9",
+      fontWeight: "500",
+      fontSize: "0.875rem"
+    },
+    input: {
+      padding: "0.75rem",
+      borderRadius: "8px",
+      border: "1px solid #334155",
+      backgroundColor: "#1e293b",
+      color: "#f1f5f9",
+      fontSize: "0.875rem",
+      transition: "all 0.2s ease",
+      outline: "none"
+    },
+    textarea: {
+      padding: "0.75rem",
+      borderRadius: "8px",
+      border: "1px solid #334155",
+      backgroundColor: "#1e293b",
+      color: "#f1f5f9",
+      fontSize: "0.875rem",
+      transition: "all 0.2s ease",
+      outline: "none",
+      resize: "vertical",
+      minHeight: "100px",
+      fontFamily: "inherit"
+    },
+    select: {
+      padding: "0.75rem",
+      borderRadius: "8px",
+      border: "1px solid #334155",
+      backgroundColor: "#1e293b",
+      color: "#f1f5f9",
+      fontSize: "0.875rem",
+      transition: "all 0.2s ease",
+      outline: "none",
+      cursor: "pointer"
+    },
+    fileInputGroup: {
+      display: "flex",
+      alignItems: "center"
+    },
+    fileInput: {
+      flex: "1",
+      padding: "0.75rem",
+      borderRadius: "8px 0 0 8px",
+      border: "1px solid #334155",
+      borderRight: "none",
+      backgroundColor: "#1e293b",
+      color: "#f1f5f9",
+      fontSize: "0.875rem",
+      outline: "none"
+    },
+    fileIcon: {
+      padding: "0.75rem",
+      borderRadius: "0 8px 8px 0",
+      border: "1px solid #334155",
+      borderLeft: "none",
+      backgroundColor: "#374151",
+      color: "#94a3b8",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    helperText: {
+      color: "#94a3b8",
+      fontSize: "0.75rem",
+      marginTop: "0.25rem"
+    },
+    successText: {
+      color: "#22c55e",
+      fontSize: "0.75rem",
+      marginTop: "0.5rem"
+    },
+    buttonGroup: {
+      display: "flex",
+      gap: "1rem",
+      marginTop: "2rem"
+    },
+    button: {
+      flex: "1",
+      padding: "0.75rem 1.5rem",
+      borderRadius: "8px",
+      border: "none",
+      fontWeight: "600",
+      fontSize: "0.875rem",
+      cursor: "pointer",
+      transition: "all 0.2s ease",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "0.5rem"
+    },
+    cancelButton: {
+      backgroundColor: "transparent",
+      border: "1px solid #475569",
+      color: "#94a3b8"
+    },
+    submitButton: {
+      backgroundColor: "#2563eb",
+      color: "#ffffff"
+    },
+    disabledButton: {
+      backgroundColor: "#374151",
+      color: "#9ca3af",
+      cursor: "not-allowed"
+    },
+    spinner: {
+      width: "16px",
+      height: "16px",
+      border: "2px solid transparent",
+      borderTop: "2px solid currentColor",
+      borderRadius: "50%",
+      animation: "spin 1s linear infinite"
+    }
+  };
+
+  // Add CSS animation for spinner
+  const spinnerStyle = `
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  `;
+
+  const handleInputFocus = (e) => {
+    e.target.style.borderColor = "#60a5fa";
+    e.target.style.backgroundColor = "#1e40af";
+  };
+
+  const handleInputBlur = (e) => {
+    e.target.style.borderColor = "#334155";
+    e.target.style.backgroundColor = "#1e293b";
+  };
+
+  const handleButtonHover = (e, isHover, isCancel = false) => {
+    if (loading) return;
+    
+    if (isCancel) {
+      e.target.style.backgroundColor = isHover ? "#374151" : "transparent";
+      e.target.style.color = isHover ? "#e2e8f0" : "#94a3b8";
+    } else {
+      e.target.style.backgroundColor = isHover ? "#22c55e" : "#055e25ff";
+    }
+  };
+
   return (
-    <div className="container my-4">
-      <div className="row justify-content-center">
-        <div className="col-md-8 col-lg-6">
-          <div className="card shadow-sm">
-            <div className="card-header bg-primary text-white">
-              <div className="d-flex align-items-center">
-                <button
-                  className="btn btn-link text-white p-0 me-3"
-                  onClick={() => navigate("/meals")}
+    <div style={styles.container}>
+      <style>{spinnerStyle}</style>
+      <div style={styles.card}>
+        {/* Header */}
+        <div style={styles.header}>
+          <div style={styles.headerContent}>
+            <button
+              style={styles.backButton}
+              onClick={() => navigate("/meals")}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#1e293b";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "transparent";
+              }}
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <h2 style={styles.title}>Add New Meal</h2>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div style={styles.body}>
+          {error && (
+            <div style={styles.errorAlert}>
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} style={styles.form}>
+            {/* Meal Name */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Meal Name *</label>
+              <input
+                type="text"
+                name="menu_name"
+                value={formData.menu_name}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter meal name"
+                style={styles.input}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                disabled={loading}
+              />
+            </div>
+
+            {/* Description */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Description *</label>
+              <textarea
+                name="menu_description"
+                value={formData.menu_description}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter meal description"
+                style={styles.textarea}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                disabled={loading}
+              />
+            </div>
+
+            {/* Price and Category Row */}
+            <div style={{ display: "flex", gap: "1rem" }}>
+              {/* Price */}
+              <div style={{ ...styles.formGroup, flex: 1 }}>
+                <label style={styles.label}>Price (Kshs) *</label>
+                <input
+                  type="number"
+                  name="menu_price"
+                  value={formData.menu_price}
+                  onChange={handleInputChange}
+                  required
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                  style={styles.input}
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
+                  disabled={loading}
+                />
+              </div>
+
+              {/* Category */}
+              <div style={{ ...styles.formGroup, flex: 1 }}>
+                <label style={styles.label}>Category *</label>
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleInputChange}
+                  required
+                  style={styles.select}
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
+                  disabled={loading}
                 >
-                  <ArrowLeft size={20} />
-                </button>
-                <h4 className="mb-0">Add New Meal</h4>
+                  <option value="">Select category</option>
+                  <option value="Beverage">Beverage</option>
+                  <option value="Food">Food</option>
+                  <option value="Drink">Drink</option>
+                  <option value="Fast Food">Fast Food</option>
+                </select>
               </div>
             </div>
 
-            <div className="card-body">
-              {error && (
-                <div className="alert alert-danger" role="alert">
-                  {error}
+            {/* File Upload */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Meal Photo</label>
+              <div style={styles.fileInputGroup}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={styles.fileInput}
+                  disabled={loading}
+                />
+                <div style={styles.fileIcon}>
+                  <Upload size={16} />
+                </div>
+              </div>
+              <div style={styles.helperText}>
+                Supported formats: JPG, PNG Max size: 5MB
+              </div>
+              {formData.menu_photo && (
+                <div style={styles.successText}>
+                  Selected: {formData.menu_photo.name}
                 </div>
               )}
-
-              <form onSubmit={handleSubmit}>
-                <div className="row g-3">
-                  <div className="col-12">
-                    <label className="form-label">Meal Name *</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="menu_name"
-                      value={formData.menu_name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Enter meal name"
-                    />
-                  </div>
-
-                  <div className="col-12">
-                    <label className="form-label">Description *</label>
-                    <textarea
-                      className="form-control"
-                      name="menu_description"
-                      value={formData.menu_description}
-                      onChange={handleInputChange}
-                      required
-                      rows="4"
-                      placeholder="Enter meal description"
-                    />
-                  </div>
-
-                  <div className="col-md-6">
-                    <label className="form-label">Price (Kshs) *</label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="menu_price"
-                      value={formData.menu_price}
-                      onChange={handleInputChange}
-                      required
-                      min="0"
-                      step="0.01"
-                      placeholder="0.00"
-                    />
-                  </div>
-
-                  {/* ✅ Added Category field */}
-                  <div className="col-md-6">
-                    <label className="form-label">Category *</label>
-                    <select
-                      className="form-select"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleInputChange}
-                      required
-                    >
-                      <option value="">Select category</option>
-                      <option value="Beverage">Beverage</option>
-                      <option value="Food">Food</option>
-                      <option value="Drink">Drink</option>
-                      <option value="Fast Food">Fast Food</option>
-                    </select>
-                  </div>
-
-                  <div className="col-12">
-                    <label className="form-label">Meal Photo</label>
-                    <div className="input-group">
-                      <input
-                        type="file"
-                        className="form-control"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                      />
-                      <span className="input-group-text">
-                        <Upload size={16} />
-                      </span>
-                    </div>
-                    <div className="form-text">
-                      Supported formats: JPG, PNG Max size: 5MB
-                    </div>
-                    {formData.menu_photo && (
-                      <div className="mt-2">
-                        <small className="text-success">
-                          Selected: {formData.menu_photo.name}
-                        </small>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="d-flex gap-2 mt-4">
-                  <button
-                    type="button"
-                    className="btn btn-secondary flex-fill"
-                    onClick={() => navigate("/meals")}
-                    disabled={loading}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn btn-primary flex-fill"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <span
-                          className="spinner-border spinner-border-sm me-2"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
-                        Adding Meal...
-                      </>
-                    ) : (
-                      <>
-                        <Plus size={16} className="me-1" />
-                        Add Meal
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
             </div>
-          </div>
+
+            {/* Buttons */}
+            <div style={styles.buttonGroup}>
+              <button
+                type="button"
+                onClick={() => navigate("/meals")}
+                disabled={loading}
+                style={{
+                  ...styles.button,
+                  ...styles.cancelButton,
+                  ...(loading ? styles.disabledButton : {})
+                }}
+                onMouseEnter={(e) => handleButtonHover(e, true, true)}
+                onMouseLeave={(e) => handleButtonHover(e, false, true)}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  ...styles.button,
+                  ...styles.submitButton,
+                  ...(loading ? styles.disabledButton : {})
+                }}
+                onMouseEnter={(e) => handleButtonHover(e, true)}
+                onMouseLeave={(e) => handleButtonHover(e, false)}
+              >
+                {loading ? (
+                  <>
+                    <div style={styles.spinner}></div>
+                    Adding Meal...
+                  </>
+                ) : (
+                  <>
+                    <Plus size={16} />
+                    Add Meal
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

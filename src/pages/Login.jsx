@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Auth from "../Apis/Auth";
 import { toast } from "react-toastify";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +35,7 @@ const Login = () => {
           toast.success("Restaurant Login successful");
           localStorage.setItem("restaurant", JSON.stringify(response));
           setTimeout(() => {
-            window.location.href = "/dashboardres";
+            window.location.href = "/meals";
           }, 2000);
         } else {
           toast.error(response.message);
@@ -51,54 +52,57 @@ const Login = () => {
   };
 
   return (
-    <div className="row justify-content-center align-items-center vh-100 bg-light">
-      <div className="col-md-5 col-sm-10 bg-white shadow rounded-4 p-5 text-center">
-        <div className="d-flex justify-content-center align-items-center mb-3">
-          <div className="bg-success rounded-circle p-3">
-            <Briefcase className="text-white" size={32} />
+    <div className="login-container">
+      <div className="login-form glass">
+        <div className="login-header">
+          <div className="login-icon">
+            <Briefcase size={32} />
           </div>
         </div>
-        <h2 className="fw-bold text-success">DishDash</h2>
-        <p className="text-muted mb-4">Corporate Delivery Login</p>
+        <h2 className="login-title">DishDash</h2>
+        <p className="login-subtitle">Corporate Delivery Login</p>
 
         <form onSubmit={handleLogin}>
           {/* Role Selection */}
-          <div className="mb-3 text-start">
-            <label className="fw-semibold mb-2">Login as:</label>
-            <div>
-              <input
-                type="radio"
-                id="company"
-                value="company"
-                checked={role === "company"}
-                onChange={(e) => setRole(e.target.value)}
-              />
-              <label htmlFor="company" className="ms-2 me-3">
-                Company
+          <div className="role-selection">
+            <label className="role-label">Login as:</label>
+            <div className="role-options">
+              <label className="role-option">
+                <input
+                  type="radio"
+                  id="company"
+                  value="company"
+                  checked={role === "company"}
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <span className="role-custom-radio"></span>
+                <span className="role-text">Company</span>
               </label>
-              <input
-                type="radio"
-                id="restaurant"
-                value="restaurant"
-                checked={role === "restaurant"}
-                onChange={(e) => setRole(e.target.value)}
-              />
-              <label htmlFor="restaurant" className="ms-2">
-                Restaurant
+              
+              <label className="role-option">
+                <input
+                  type="radio"
+                  id="restaurant"
+                  value="restaurant"
+                  checked={role === "restaurant"}
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <span className="role-custom-radio"></span>
+                <span className="role-text">Restaurant</span>
               </label>
             </div>
           </div>
 
           {/* Email input */}
-          <div className="mb-3">
-            <div className="input-group border rounded">
-              <span className="input-group-text bg-white border-end-0">
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-text">
                 <Mail size={18} />
               </span>
               <input
                 type="email"
                 id="email"
-                className="form-control border-start-0"
+                className="form-control"
                 placeholder="Enter your email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -107,27 +111,27 @@ const Login = () => {
           </div>
 
           {/* Password input */}
-          <div className="mb-3">
-            <div className="input-group border rounded">
-              <span className="input-group-text bg-white border-end-0">
+          <div className="form-group">
+            <div className="input-group">
+              <span className="input-group-text">
                 <Lock size={18} />
               </span>
               <input
                 type="password"
                 id="password"
                 placeholder="Enter your password"
-                className="form-control border-start-0"
+                className="form-control"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <span className="input-group-text bg-white border-start-0">
+              <span className="input-group-text">
                 <EyeOff size={18} />
               </span>
             </div>
           </div>
 
           {/* Remember me */}
-          <div className="mb-3 form-check text-start">
+          <div className="form-check">
             <input
               type="checkbox"
               id="rememberMe"
@@ -140,13 +144,13 @@ const Login = () => {
 
           {/* Submit button */}
           <button
-            className="btn btn-success w-100 py-2 fw-bold"
+            className="submit-btn"
             type="submit"
             disabled={loading}
           >
             {loading ? (
               <>
-                <Loader2 size={18} className="me-2 spin" />
+                <Loader2 size={18} className="spin" />
                 Loading...
               </>
             ) : (
@@ -154,11 +158,9 @@ const Login = () => {
             )}
           </button>
 
-          <p className="mt-3">
-            Don&apos;t have an account?{" "}
-            <a href="#" className="text-success fw-semibold">
-              Sign Up
-            </a>
+          <p className="signup-link">
+            Don&apos;t have an account?
+            <a href="register">Sign Up</a>
           </p>
         </form>
       </div>

@@ -10,7 +10,7 @@ const LandingPage = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
             // Uncomment next line to only animate once
-            // observer.unobserve(entry.target);
+            observer.unobserve(entry.target);
           } else {
             entry.target.classList.remove('in-view');
           }
@@ -32,10 +32,10 @@ const LandingPage = () => {
             <div className="bg-success rounded-circle p-2 me-2">
               <Utensils className="text-white" size={24} />
             </div>
-            <span className="fw-bold fs-4 text-success">DishDash</span>
+            <span className="fw-bold fs-4 text-white">DishDash</span>
           </div>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-success"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -46,17 +46,17 @@ const LandingPage = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a href="#services" className="nav-link">
+                <a href="#services" className="nav-link text-white">
                   Services
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#about" className="nav-link">
+                <a href="#about" className="nav-link text-white">
                   About
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#contact" className="nav-link">
+                <a href="#contact" className="nav-link text-white">
                   Contact
                 </a>
               </li>
@@ -72,21 +72,21 @@ const LandingPage = () => {
 
       {/* Hero section */}
       <section
-        className="bg-gradient-success text-white d-flex align-items-center reveal-fade"
-        style={{ minHeight: "calc(90vh - 64px)", paddingTop: "96px", paddingBottom: "96px" }}
+        className="text-white d-flex align-items-center reveal-fade"
+        style={{ minHeight: "calc(90vh - 64px)", paddingTop: "96px", paddingBottom: "50px" }}
       >
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4 animate-slide-up reveal">
+              <h1 className="display-4 fw-bold mb-4 animate-slide-up reveal text-white">
                 Fresh Food Delivered Fast
               </h1>
-              <p className="lead mb-4 animate-fade-in animate-delay-1 reveal">
+              <p className="lead mb-4 animate-fade-in animate-delay-1 reveal text-light">
                 Discover restaurants, order meals, and get your food delivered 
                 to your doorstep with DishDash — quick, reliable, and delicious.
               </p>
               <div className="d-flex flex-column flex-sm-row gap-3 animate-fade-in animate-delay-2 reveal">
-                <a href="/register" className="btn btn-light btn-lg text-success px-4">
+                <a href="/register" className="btn btn-success btn-lg text-light px-4">
                   Get Started <ArrowRight size={20} className="ms-2" />
                 </a>
                 <a href="#about" className="btn btn-outline-light btn-lg px-4">
@@ -96,9 +96,9 @@ const LandingPage = () => {
             </div>
             <div className="col-lg-6 text-center">
               <div className="glass rounded-3 p-5 mt-5 mt-lg-0 shadow-soft animate-zoom-in animate-delay-2 reveal-zoom">
-                <Utensils size={120} className="mb-3" />
-                <h3 className="mb-3">Tasty Meals Anytime</h3>
-                <p className="mb-0">Connecting you with the best restaurants in town</p>
+                <Utensils size={120} className="mb-3 text-white" />
+                <h3 className="mb-3 text-white">Tasty Meals Anytime</h3>
+                <p className="mb-0 text-light">Connecting you with the best restaurants in town</p>
               </div>
             </div>
           </div>
@@ -112,20 +112,20 @@ const LandingPage = () => {
             <h2 className="display-5 fw-bold text-success mb-3 animate-slide-up reveal">
               Our Services
             </h2>
-            <p className="lead text-muted animate-fade-in animate-delay-1 reveal">
+            <p className="lead text-light animate-fade-in animate-delay-1 reveal">
               Making food delivery simple, fast, and enjoyable
             </p>
           </div>
 
           <div className="row g-4">
-            <div className="col-md-6 col-lg-3">
-              <div className="card h-100 border-0 shadow-soft hover-lift animate-slide-up reveal">
-                <div className="card-body text-center p-4 glass rounded-3">
+            <div className="col-md-6  col-lg-3">
+              <div className="card bg-success h-100 border-0 shadow-soft hover-lift animate-slide-up reveal">
+                <div className="card-body text-center p-4 glass rounded-2">
                   <div className="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
                     <Utensils className="text-success" size={28} />
                   </div>
-                  <h5 className="card-title">Wide Restaurant Choices</h5>
-                  <p className="card-text text-muted">
+                  <h5 className="card-title text-white">Wide Restaurant Choices</h5>
+                  <p className="card-text text-light">
                     Explore hundreds of restaurants and diverse cuisines.
                   </p>
                 </div>
@@ -133,13 +133,13 @@ const LandingPage = () => {
             </div>
 
             <div className="col-md-6 col-lg-3">
-              <div className="card h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-1 reveal">
-                <div className="card-body text-center p-4 glass rounded-3">
+              <div className="card bg-success h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-1 reveal">
+                <div className="card-body text-center p-4 glass rounded-2">
                   <div className="bg-warning bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
                     <ShoppingBasket className="text-warning" size={32} />
                   </div>
-                  <h5 className="card-title">Easy Ordering</h5>
-                  <p className="card-text text-muted">
+                  <h5 className="card-title text-white">Easy Ordering</h5>
+                  <p className="card-text text-light">
                     Quick and seamless ordering experience with secure checkout.
                   </p>
                 </div>
@@ -147,13 +147,13 @@ const LandingPage = () => {
             </div>
 
             <div className="col-md-6 col-lg-3">
-              <div className="card h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-2 reveal">
-                <div className="card-body text-center p-4 glass rounded-3">
+              <div className="card  bg-success h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-2 reveal">
+                <div className="card-body text-center p-4 glass rounded-2">
                   <div className="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
                     <Truck className="text-danger" size={32} />
                   </div>
-                  <h5 className="card-title">Fast Delivery</h5>
-                  <p className="card-text text-muted">
+                  <h5 className="card-title text-white">Fast Delivery</h5>
+                  <p className="card-text text-light">
                     Get your favorite meals delivered hot and on time.
                   </p>
                 </div>
@@ -161,13 +161,13 @@ const LandingPage = () => {
             </div>
 
             <div className="col-md-6 col-lg-3">
-              <div className="card h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-3 reveal">
-                <div className="card-body text-center p-4 glass rounded-3">
+              <div className="card bg-success h-100 border-0 shadow-soft hover-lift animate-slide-up animate-delay-3 reveal">
+                <div className="card-body text-center p-4 glass rounded-2">
                   <div className="bg-info bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
                     <Shield className="text-info" size={32} />
                   </div>
-                  <h5 className="card-title">Secure Payments</h5>
-                  <p className="card-text text-muted">
+                  <h5 className="card-title text-white">Secure Payments</h5>
+                  <p className="card-text text-light">
                     Safe and reliable payment options at your convenience.
                   </p>
                 </div>
@@ -178,7 +178,7 @@ const LandingPage = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-5 bg-light" id="about">
+      <section className="py-5" id="about" style={{background: 'rgba(15, 23, 42, 0.3)'}}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -189,9 +189,9 @@ const LandingPage = () => {
               <div className="mb-3">
                 <div className="d-flex align-items-center mb-2 animate-fade-in reveal">
                   <CheckCircle className="text-success me-3" size={24} />
-                  <h5 className="mb-0">Delicious Variety</h5>
+                  <h5 className="mb-0 text-white">Delicious Variety</h5>
                 </div>
-                <p className="text-muted ms-5 animate-fade-in animate-delay-1 reveal">
+                <p className="text-light ms-5 animate-fade-in animate-delay-1 reveal">
                   From street food to fine dining — find it all in one app.
                 </p>
               </div>
@@ -199,9 +199,9 @@ const LandingPage = () => {
               <div className="mb-3">
                 <div className="d-flex align-items-center mb-2 animate-fade-in animate-delay-1 reveal">
                   <CheckCircle className="text-success me-3" size={24} />
-                  <h5 className="mb-0">Reliable Delivery</h5>
+                  <h5 className="mb-0 text-white">Reliable Delivery</h5>
                 </div>
-                <p className="text-muted ms-5 animate-fade-in animate-delay-2 reveal">
+                <p className="text-light ms-5 animate-fade-in animate-delay-2 reveal">
                   Track your orders live and enjoy fast doorstep delivery.
                 </p>
               </div>
@@ -209,9 +209,9 @@ const LandingPage = () => {
               <div className="mb-3">
                 <div className="d-flex align-items-center mb-2 animate-fade-in animate-delay-2 reveal">
                   <CheckCircle className="text-success me-3" size={24} />
-                  <h5 className="mb-0">Affordable Deals</h5>
+                  <h5 className="mb-0 text-white">Affordable Deals</h5>
                 </div>
-                <p className="text-muted ms-5 animate-fade-in animate-delay-3 reveal">
+                <p className="text-light ms-5 animate-fade-in animate-delay-3 reveal">
                   Enjoy exclusive discounts and meal combos every day.
                 </p>
               </div>
@@ -219,9 +219,9 @@ const LandingPage = () => {
               <div className="mb-4">
                 <div className="d-flex align-items-center mb-2 animate-fade-in animate-delay-3 reveal">
                   <CheckCircle className="text-success me-3" size={24} />
-                  <h5 className="mb-0">Trusted by Thousands</h5>
+                  <h5 className="mb-0 text-white">Trusted by Thousands</h5>
                 </div>
-                <p className="text-muted ms-5 animate-fade-in animate-delay-4 reveal">
+                <p className="text-light ms-5 animate-fade-in animate-delay-4 reveal">
                   Join our growing community of happy customers.
                 </p>
               </div>
@@ -229,21 +229,21 @@ const LandingPage = () => {
 
             <div className="col-lg-6">
               <div className="glass rounded-3 p-4 shadow-soft animate-zoom-in reveal-zoom">
-                <h3 className="text-center mb-4">
+                <h3 className="text-center mb-4 text-white">
                   Loved by Foodies Everywhere
                 </h3>
                 <div className="row text-center">
                   <div className="col-4">
                     <h2 className="text-success fw-bold animate-slide-up reveal">300+</h2>
-                    <small className="text-muted">Restaurants</small>
+                    <small className="text-light">Restaurants</small>
                   </div>
                   <div className="col-4">
                     <h2 className="text-success fw-bold animate-slide-up animate-delay-1 reveal">20K+</h2>
-                    <small className="text-muted">Orders Delivered</small>
+                    <small className="text-light">Orders Delivered</small>
                   </div>
                   <div className="col-4">
                     <h2 className="text-success fw-bold animate-slide-up animate-delay-2 reveal">4.9★</h2>
-                    <small className="text-muted">Avg Rating</small>
+                    <small className="text-light">Avg Rating</small>
                   </div>
                 </div>
 
@@ -257,13 +257,13 @@ const LandingPage = () => {
                         fill="currentColor"
                       />
                     ))}
-                    <span className="ms-2 small text-muted">5.0 out of 5</span>
+                    <span className="ms-2 small text-light">5.0 out of 5</span>
                   </div>
-                  <p className="small text-muted mb-0">
+                  <p className="small text-light mb-0">
                     "DishDash makes ordering food so simple! Always on time and
                     the meals are fantastic."
                   </p>
-                  <small className="text-muted">- Jane Mwangi, Customer</small>
+                  <small className="text-light">- Jane Mwangi, Customer</small>
                 </div>
               </div>
             </div>
@@ -278,7 +278,7 @@ const LandingPage = () => {
             <h2 className="display-5 fw-bold text-success mb-3 animate-slide-up reveal">
               Get In Touch
             </h2>
-            <p className="lead text-muted animate-fade-in animate-delay-1 reveal">
+            <p className="lead text-light animate-fade-in animate-delay-1 reveal">
               Have a question or want to partner with us? Reach out today!
             </p>
           </div>
@@ -290,24 +290,24 @@ const LandingPage = () => {
                   <div className="glass rounded-circle p-3 d-inline-block mb-3 hover-lift">
                     <Phone className="text-success" size={24} />
                   </div>
-                  <h5>Call Us</h5>
-                  <p className="text-muted">+254 700 123 456</p>
+                  <h5 className="text-white">Call Us</h5>
+                  <p className="text-light">+254 700 123 456</p>
                 </div>
 
                 <div className="col-md-4 text-center animate-slide-up animate-delay-1 reveal">
                   <div className="glass rounded-circle p-3 d-inline-block mb-3 hover-lift">
                     <Mail className="text-success" size={24} />
                   </div>
-                  <h5>Email Us</h5>
-                  <p className="text-muted">support@dishdash.com</p>
+                  <h5 className="text-white">Email Us</h5>
+                  <p className="text-light">support@dishdash.com</p>
                 </div>
 
                 <div className="col-md-4 text-center animate-slide-up animate-delay-2 reveal">
                   <div className="glass rounded-circle p-3 d-inline-block mb-3 hover-lift">
                     <MapPin className="text-success" size={24} />
                   </div>
-                  <h5>Visit Us</h5>
-                  <p className="text-muted">
+                  <h5 className="text-white">Visit Us</h5>
+                  <p className="text-light">
                     Nairobi, Kenya <br />
                     Westlands, Waiyaki Way
                   </p>
@@ -327,11 +327,11 @@ const LandingPage = () => {
                 <div className="bg-success rounded-circle p-2 me-2">
                   <Utensils className="text-white" size={20} />
                 </div>
-                <span className="fw-bold">DishDash</span>
+                <span className="fw-bold text-white">DishDash</span>
               </div>
             </div>
             <div className="col-md-6 text-md-end mt-3 mt-md-0">
-              <small className="text-muted">
+              <small className="text-light">
                 © 2025 DishDash. All rights reserved. | Privacy Policy | Terms of Service
               </small>
             </div>
