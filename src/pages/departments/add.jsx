@@ -192,7 +192,7 @@ const AddDepartment = () => {
 
   const handleButtonHover = (e, isHover) => {
     if (!loading) {
-      e.target.style.backgroundColor = isHover ? '#1d4ed8' : '#2563eb';
+      e.target.style.backgroundColor = isHover ? '#04ca4cff' : '#078836ff';
     }
   };
 
@@ -254,8 +254,8 @@ const AddDepartment = () => {
         </form>
 
         {/* Quick info about what's happening in the background */}
-        <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: '#1e293b', borderRadius: 8 }}>
-          <p style={{ color: '#93c5fd', fontSize: '0.875rem', textAlign: 'center', margin: 0 }}>
+        <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: '#1e3b2cff', borderRadius: 8 }}>
+          <p style={{ color: '#22c55e', fontSize: '0.875rem', textAlign: 'center', margin: 0 }}>
             <strong>Note:</strong> Department will be automatically linked to your company ({companyInfo?.company_name || 'Loading...'})
           </p>
         </div>

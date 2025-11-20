@@ -220,7 +220,7 @@ const AddEmployee = () => {
 
   const handleButtonHover = (e, isHover) => {
     if (!loading) {
-      e.target.style.backgroundColor = isHover ? '#1d4ed8' : '#2563eb';
+      e.target.style.backgroundColor = isHover ? '#06c14aff' : '#038633ff';
     }
   };
 
@@ -350,12 +350,12 @@ const AddEmployee = () => {
             onMouseEnter={(e) => handleButtonHover(e, true)}
             onMouseLeave={(e) => handleButtonHover(e, false)}
           >
-            {loading ? 'Creating Employee...' : 'Create Employee'}
+            {loading ? 'Adding Employee...' : 'Add Employee'}
           </button>
         </form>
 
-        <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: '#1e293b', borderRadius: 8 }}>
-          <p style={{ color: '#93c5fd', fontSize: '0.875rem', textAlign: 'center', margin: 0 }}>
+        <div style={{ marginTop: '1.5rem', padding: '1rem', backgroundColor: '#0a2a0bff', borderRadius: 8 }}>
+          <p style={{ color: '#93fddbff', fontSize: '0.875rem', textAlign: 'center', margin: 0 }}>
             <strong>Note:</strong> Employee will be automatically linked to your company and set as active.
           </p>
         </div>
